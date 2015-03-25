@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ElastiCode .devModeWithLogging(elastiCodeLogLevelErrors);
         // --------------------------------------
         
-        ElastiCode .startSession("");
+        ElastiCode .startSession("<#App Key#>");
         return true
     }
 
@@ -57,7 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func sessionStartedNotification(notification: NSNotification)
     {
         // Add code here for defining cases / dynamic objects
+        // Lets define a case with 3 options:
         ElastiCode.defineCase("First Button", withNumOfStates: 3)
+        
+        // And a dynamic object with string value and a default value of "Ok"
+        ElastiCode.defineDynamicObject("Button text", type: ElastiCodeDObjType_string, defaultValue: "Ok")
         
         // and continue with the app flow
         NSNotificationCenter .defaultCenter() .postNotificationName("finishedSync", object: self)

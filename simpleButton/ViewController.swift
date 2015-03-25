@@ -32,12 +32,13 @@ class ViewController: UIViewController {
 
     func finishedSyncNotification(notification: NSNotification)
     {
+        let text:NSString = ElastiCode.valueForDynamicObject("Button text") as NSString
         let btn = UIButton .buttonWithType(UIButtonType.System) as UIButton
         btn.frame = CGRectMake(125, 200, 125, 50)
         
         btn.backgroundColor = UIColor.greenColor()
-        btn.setTitle("Ok", forState: UIControlState.Normal)
-        
+        btn.setTitle(text, forState: UIControlState.Normal)
+        btn.addTarget(self, action: "buttonClicked", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(btn)
         
         switch(ElastiCode .stateIndexForCase("First Button")){
@@ -52,7 +53,13 @@ class ViewController: UIViewController {
             break;
         }
         ElastiCode .takeSnapShot("First Button")
-        
+        ElastiCode .takeSnapShot("Button text")
+    }
+    
+    func buttonClicked()
+    {
+        ElastiCode.goalReached("First Button")
+        ElastiCode.dynamicObjectGoalReached("Button text")
     }
 }
 
