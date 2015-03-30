@@ -1,4 +1,4 @@
-# iOS-simpleButton
+# swift-simpleButton
 Elasticode simple button example
 
 
